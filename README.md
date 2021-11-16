@@ -24,3 +24,5 @@
 - ### NY 237 is the most common pickup point. Because it has an intersection with famous locations and schools.
 - ### NY 236 is the most common dropoff point. 
 - ### Where NY 140 has low pickup points and NY 99 has low dropping points compared to all others.
+
+Please run the file to view the visualizations
