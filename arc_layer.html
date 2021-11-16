@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~8.5.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-map-container {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
+#map {
+  pointer-events: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+#deckgl-overlay {
+  z-index: 2;
+  background: none;
+}
+
+#deck-map-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const jsonInput = {"initialViewState": {"bearing": 45, "latitude": 40.7128, "longitude": -74.006, "pitch": 50, "zoom": 8}, "layers": [{"@@type": "ArcLayer", "autoHighlight": true, "data": [{"Drop_location": [40.750415354616045, -73.80297832398533], "Dropoff_locationId": "NY 164", "Dropping_day": "Monday", "Elat": 40.750415354616045, "Elong": -73.80297832398533, "Original_distance_Kms": 4.458644946366134, "Passenger_count": 1.0, "Pick_day": "Monday", "Pick_location": [40.784640037820054, -73.8305899006457], "Pick_locationId": "NY 138", "Slat": 40.784640037820054, "Slong": -73.8305899006457, "Time_diff_min": 26.05, "Total_amount": 45.2, "VendorID": 2.0, "elat_long": [-73.80297832398533, 40.750415354616045], "slat_long": [-73.8305899006457, 40.784640037820054]}, {"Drop_location": [40.74698543007731, -73.79163530001794], "Dropoff_locationId": "NY 186", "Dropping_day": "Monday", "Elat": 40.74698543007731, "Elong": -73.79163530001794, "Original_distance_Kms": 0.0, "Passenger_count": 1.0, "Pick_day": "Monday", "Pick_location": [40.74698543007731, -73.79163530001794], "Pick_locationId": "NY 186", "Slat": 40.74698543007731, "Slong": -73.79163530001794, "Time_diff_min": 0.07, "Total_amount": 5.8, "VendorID": 1.0, "elat_long": [-73.79163530001794, 40.74698543007731], "slat_long": [-73.79163530001794, 40.74698543007731]}, {"Drop_location": [40.65374004452198, -73.74707492242896], "Dropoff_locationId": "NY 236", "Dropping_day": "Monday", "Elat": 40.65374004452198, "Elong": -73.74707492242896, "Original_distance_Kms": 12.308026055842559, "Passenger_count": 1.0, "Pick_day": "Monday", "Pick_location": [40.76272801766687, -73.72059648349116], "Pick_locationId": "NY 263", "Slat": 40.76272801766687, "Slong": -73.72059648349116, "Time_diff_min": 4.45, "Total_amount": 8.3, "VendorID": 2.0, "elat_long": [-73.74707492242896, 40.65374004452198], "slat_long": [-73.72059648349116, 40.76272801766687]}, {"Drop_location": [40.75540708589228, -73.7495581685021], "Dropoff_locationId": "NY 231", "Dropping_day": "Monday", "Elat": 40.75540708589228, "Elong": -73.7495581685021, "Original_distance_Kms": 433.4474476229856, "Passenger_count": 1.0, "Pick_day": "Monday", "Pick_location": [42.596728333000044, -78.34029361099994], "Pick_locationId": "NY 79", "Slat": 42.596728333000044, "Slong": -78.34029361099994, "Time_diff_min": 11.4, "Total_amount": 16.56, "VendorID": 2.0, "elat_long": [-73.7495581685021, 40.75540708589228], "slat_long": [-78.34029361099994, 42.596728333000044]}, {"Drop_location": [41.30680000000007, -73.87324999999998], "Dropoff_locationId": "NY 13", "Dropping_day": "Monday", "Elat": 41.30680000000007, "Elong": -73.87324999999998, "Original_distance_Kms": 61.99138112213595, "Passenger_count": 1.0, "Pick_day": "Monday", "Pick_location": [40.76103763904317, -73.71845818236235], "Pick_locationId": "NY 264", "Slat": 40.76103763904317, "Slong": -73.71845818236235, "Time_diff_min": 6.6, "Total_amount": 11.3, "VendorID": 2.0, "elat_long": [-73.87324999999998, 41.30680000000007], "slat_long": [-73.71845818236235, 40.76103763904317]}, {"Drop_location": [40.67078003458249, -73.7630699406206], "Dropoff_locationId": "NY 141", "Dropping_day": "Monday", "Elat": 40.67078003458249, "Elong": -73.7630699406206, "Original_distance_Kms": 10.556201216274923, "Passenger_count": 1.0, "Pick_day": "Monday", "Pick_location": [40.760605703709125, -73.80395237371366], "Pick_locationId": "NY 162", "Slat": 40.760605703709125, "Slong": -73.80395237371366, "Time_diff_min": 4.48, "Total_amount": 11.0, "VendorID": 2.0, "elat_long": [-73.7630699406206, 40.67078003458249], "slat_long": [-73.80395237371366, 40.760605703709125]}, {"Drop_location": [40.780672392143096, -73.79743099670318], "Dropoff_locationId": "NY 166", "Dropping_day": "Monday", "Elat": 40.780672392143096, "Elong": -73.79743099670318, "Original_distance_Kms": 14.723795085964753, "Passenger_count": 1.0, "Pick_day": "Monday", "Pick_location": [40.65374004452198, -73.74707492242896], "Pick_locationId": "NY 236", "Slat": 40.65374004452198, "Slong": -73.74707492242896, "Time_diff_min": 9.37, "Total_amount": 17.85, "VendorID": 1.0, "elat_long": [-73.79743099670318, 40.780672392143096], "slat_long": [-73.74707492242896, 40.65374004452198]}, {"Drop_location": [40.68933569229372, -73.72398491932245], "Dropoff_locationId": "NY 239", "Dropping_day": "Monday", "Elat": 40.68933569229372, "Elong": -73.72398491932245, "Original_distance_Kms": 4.408645719374218, "Passenger_count": 1.0, "Pick_day": "Monday", "Pick_location": [40.65374004452198, -73.74707492242896], "Pick_locationId": "NY 236", "Slat": 40.65374004452198, "Slong": -73.74707492242896, "Time_diff_min": 8.18, "Total_amount": 14.16, "VendorID": 2.0, "elat_long": [-73.72398491932245, 40.68933569229372], "slat_long": [-73.74707492242896, 40.65374004452198]}, {"Drop_location": [40.75540708589228, -73.7495581685021], "Dropoff_locationId": "NY 231", "Dropping_day": "Monday", "Elat": 40.75540708589228, "Elong": -73.7495581685021, "Original_distance_Kms": 4.629301304546415, "Passenger_count": 1.0, "Pick_day": "Monday", "Pick_location": [40.760605703709125, -73.80395237371366], "Pick_locationId": "NY 162", "Slat": 40.760605703709125, "Slong": -73.80395237371366, "Time_diff_min": 15.97, "Total_amount": 29.76, "VendorID": 2.0, "elat_long": [-73.7495581685021, 40.75540708589228], "slat_long": [-73.80395237371366, 40.760605703709125]}, {"Drop_location": [42.76375565097234, -73.67711894393948], "Dropoff_locationId": "NY 107", "Dropping_day": "Monday", "Elat": 42.76375565097234, "Elong": -73.67711894393948, "Original_distance_Kms": 223.41636043389164, "Passenger_count": 1.0, "Pick_day": "Monday", "Pick_location": [40.754544522261114, -73.80572351878894], "Pick_locationId": "NY 161", "Slat": 40.754544522261114, "Slong": -73.80572351878894, "Time_diff_min": 7.12, "Total_amount": 10.8, "VendorID": 2.0, "elat_long": [-73.67711894393948, 42.76375565097234], "slat_long": [-73.80572351878894, 40.754544522261114]}], "getSourceColor": [240, 100, 0, 40], "getSourcePosition": "@@=[Slong, Slat]", "getTargetColor": [0, 255, 0, 40], "getTargetPosition": "@@=[Elong, Elat]", "getTilt": 15, "getWidth": "@@=S000 * 2", "id": "26cc5acc-4da3-4485-ad51-34c5f572c78d", "pickable": true}], "mapProvider": "carto", "mapStyle": "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json", "views": [{"@@type": "MapView", "controller": true}]};
+    const tooltip = {'text': '{Pick_locationId} to {Dropoff_locationId} and distance is {Original_distance_Kms}'};
+    const customLibraries = null;
+
+    const deckInstance = createDeck({
+                  container: document.getElementById('deck-container'),
+      jsonInput,
+      tooltip,
+      customLibraries
+    });
+
+  </script>
+</html>
