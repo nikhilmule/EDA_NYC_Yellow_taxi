@@ -9,7 +9,7 @@
 
 ## __Objective:__
 
-- ### The main goal of this project is to identify maximum taxi uasge day and distance between two points.
+- ### The main goal of this project is to identify maximum taxi usage day and distance between two points.
 - ### Time difference between pick and drop location.
 - ### Top pickup and dropping points in the city
 
@@ -19,7 +19,8 @@
 
 ### __From the calculations and analysis following are key findings:__
 
-- ### Friday is the most active day and where most people utilized the taxis.- Raids with a single passenger are booked more compared to the 2,3,4 passengers
+- ### Friday is the most active day and where most people utilized the taxis.
+- ### Raids with a single passenger are booked more compared to the 2,3,4 passengers
 - ### NY 237 is the most common pickup point. Because it has an intersection with famous locations and schools.
 - ### NY 236 is the most common dropoff point. 
 - ### Where NY 140 has low pickup points and NY 99 has low dropping points compared to all others.
