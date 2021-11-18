@@ -24,8 +24,8 @@
 - ### NY 237 is the most common pickup point. Because it has an intersection with famous locations and schools.
 - ### NY 236 is the most common dropoff point. 
 - ### Where NY 140 has low pickup points and NY 99 has low dropping points compared to all others.
-- ### Wednesday and thursday are the most busiest days at NY 236 location
-- ### From morning 6 am to 14 pm is linear increment and from 15 pm to night 23 pm there is linear decrement
+- ### Wednesday and thursday are the busiest days at NY 236 location
+- ### From morning 6 am to 14 pm is linear increment and from 15:00 - 23:00 pm there is linear decrement
 - ### From Night 1 am to 5 am usage of taxis are very low.
 
 Please run the file to view the visualizations
